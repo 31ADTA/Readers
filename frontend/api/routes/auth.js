@@ -8,13 +8,16 @@ router.get('/google',
 );
 
 // Google OAuth callback
-router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: `${process.env.CLIENT_URL}/login?error=failed` }),
-  (req, res) => {
+router.get('/google/callback', (req, res, next) => {
+  const clientUrl = process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
+  passport.authenticate('google', { 
+    failureRedirect: `${clientUrl}/login?error=failed` 
+  })(req, res, next);
+}, (req, res) => {
     // Successful login → redirect to home
-    res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/home`);
-  }
-);
+    const clientUrl = process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
+    res.redirect(`${clientUrl}/home`);
+});
 
 // Get current logged in user
 router.get('/me', (req, res) => {

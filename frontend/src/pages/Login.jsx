@@ -53,7 +53,8 @@ const Login = () => {
   }, []);
 
   const handleLogin = () => {
-    window.location.href = `${process.env.REACT_APP_API_URL}/api/auth/google`;
+    const baseUrl = process.env.REACT_APP_API_URL || '';
+    window.location.href = `${baseUrl}/api/auth/google`;
   };
 
   return (
