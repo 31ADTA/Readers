@@ -1,0 +1,495 @@
+/* ═══════════════════════════════════════════
+   NOVELIX - LOGIN PAGE
+   Dark Luxury Gold Theme
+   Replace your entire Login.css with this!
+═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Page ── */
+.lx-page {
+  min-height: 100vh;
+  background: #080608;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Canvas ── */
+.lx-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Background grid ── */
+.lx-bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Glows ── */
+.lx-bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lx-glow-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation: lx-float 8s ease-in-out infinite;
+}
+
+.lx-glow-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+  bottom: -80px;
+  left: -80px;
+  animation: lx-float 10s ease-in-out infinite reverse;
+}
+
+.lx-glow-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(150, 100, 30, 0.08) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes lx-float {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+/* ── Floating decorations ── */
+.lx-deco {
+  position: fixed;
+  font-size: 24px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 1;
+  animation: lx-drift linear infinite;
+}
+
+.lx-deco-1 {
+  top: 15%;
+  left: 8%;
+  font-size: 32px;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+
+.lx-deco-2 {
+  top: 30%;
+  right: 10%;
+  font-size: 20px;
+  color: #c9a84c;
+  animation-duration: 12s;
+  animation-delay: -3s;
+}
+
+.lx-deco-3 {
+  bottom: 20%;
+  left: 12%;
+  font-size: 28px;
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+
+.lx-deco-4 {
+  bottom: 35%;
+  right: 8%;
+  font-size: 16px;
+  color: #c9a84c;
+  animation-duration: 14s;
+  animation-delay: -9s;
+}
+
+.lx-deco-5 {
+  top: 60%;
+  left: 5%;
+  font-size: 22px;
+  animation-duration: 20s;
+  animation-delay: -4s;
+}
+
+@keyframes lx-drift {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.07;
+  }
+
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.12;
+  }
+
+  75% {
+    transform: translateY(15px) rotate(-5deg);
+    opacity: 0.05;
+  }
+}
+
+/* ── Main Card ── */
+.lx-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 24px;
+  padding: 40px 36px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(201, 168, 76, 0.05),
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(201, 168, 76, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: lx-card-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes lx-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Ornament ── */
+.lx-ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  animation: lx-fade-in 1s ease 0.2s both;
+}
+
+.lx-ornament-bottom {
+  margin-bottom: 0;
+  margin-top: 28px;
+}
+
+.lx-ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent);
+}
+
+.lx-ornament-diamond {
+  color: #c9a84c;
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* ── Logo ── */
+.lx-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  animation: lx-fade-in 1s ease 0.3s both;
+}
+
+.lx-logo-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #c9a84c, #f6c90e, #c9a84c);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  box-shadow:
+    0 8px 32px rgba(201, 168, 76, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  animation: lx-pulse 3s ease-in-out infinite;
+}
+
+@keyframes lx-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 8px 48px rgba(201, 168, 76, 0.65), 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.lx-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #c9a84c 0%, #f6e28a 40%, #c9a84c 70%, #a07830 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ── Tagline ── */
+.lx-tagline {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(201, 168, 76, 0.6);
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+  animation: lx-fade-in 1s ease 0.4s both;
+}
+
+/* ── Features ── */
+.lx-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  animation: lx-fade-in 1s ease 0.5s both;
+}
+
+.lx-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  transition: all 0.3s;
+}
+
+.lx-feature:hover {
+  background: rgba(201, 168, 76, 0.05);
+  border-color: rgba(201, 168, 76, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lx-feature-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Divider ── */
+.lx-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  animation: lx-fade-in 1s ease 0.6s both;
+}
+
+.lx-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lx-divider-text {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Login Button ── */
+.lx-login-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #c9a84c 0%, #f6e28a 50%, #c9a84c 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 4px 24px rgba(201, 168, 76, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  animation: lx-fade-in 1s ease 0.7s both;
+  margin-bottom: 16px;
+}
+
+.lx-login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.lx-login-btn:hover {
+  background-position: 0 0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(201, 168, 76, 0.55);
+}
+
+.lx-login-btn:hover::before {
+  left: 100%;
+}
+
+.lx-login-btn:active {
+  transform: translateY(0);
+}
+
+.lx-google-icon {
+  flex-shrink: 0;
+  background: white;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.lx-btn-arrow {
+  margin-left: auto;
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.lx-login-btn:hover .lx-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Privacy ── */
+.lx-privacy {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1.7;
+  animation: lx-fade-in 1s ease 0.8s both;
+}
+
+/* ── Bottom Quote ── */
+.lx-quote {
+  position: relative;
+  z-index: 10;
+  margin-top: 32px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(201, 168, 76, 0.35);
+  max-width: 340px;
+  line-height: 1.6;
+  animation: lx-fade-in 1.2s ease 1s both;
+}
+
+.lx-quote-mark {
+  font-size: 24px;
+  line-height: 0;
+  vertical-align: -8px;
+  margin: 0 4px;
+  color: rgba(201, 168, 76, 0.25);
+}
+
+.lx-quote-author {
+  display: block;
+  font-size: 11px;
+  font-style: normal;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* ── Fade in animation ── */
+@keyframes lx-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .lx-card {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .lx-logo-text {
+    font-size: 34px;
+    letter-spacing: 3px;
+  }
+
+  .lx-logo-icon {
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+  }
+
+  .lx-deco {
+    display: none;
+  }
+
+  .lx-quote {
+    display: none;
+  }
+}

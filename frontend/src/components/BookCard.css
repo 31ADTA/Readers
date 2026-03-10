@@ -1,0 +1,153 @@
+.book-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -10px rgba(201, 168, 76, 0.4);
+}
+
+.book-cover {
+  position: relative;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.04);
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--bg3), var(--card));
+}
+
+.progress-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: #0d0d0d;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 20px;
+}
+
+.book-info {
+  padding: 0 2px;
+}
+
+.book-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-author {
+  font-size: 12px;
+  color: var(--text3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+}
+
+.progress-bar-wrap {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Add these at the BOTTOM of your BookCard.css */
+
+/* Language badge - top corner of book cover */
+.lang-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(13, 13, 13, 0.85);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Make book card relative so badge positions correctly */
+.book-card {
+  position: relative;
+}
+
+/* Language row below book info */
+.book-language-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.lang-full {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.book-pages {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+/* Category tags */
+.book-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.category-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 20px;
+  color: var(--accent);
+}

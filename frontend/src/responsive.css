@@ -1,0 +1,631 @@
+/* ═══════════════════════════════════════════════════
+   PAGETURN - GLOBAL RESPONSIVE CSS
+   Add this file as: frontend/src/responsive.css
+   Then import it in frontend/src/index.js or App.jsx:
+   import './responsive.css';
+═══════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   BREAKPOINTS USED:
+   Mobile:  max-width 480px
+   Tablet:  max-width 768px
+   Laptop:  max-width 1024px
+   Desktop: 1024px+
+══════════════════════════════════════ */
+
+/* ─────────────────────────────────────
+   GLOBAL BASE
+───────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ─────────────────────────────────────
+   NAVBAR
+───────────────────────────────────── */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-logo {
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.navbar-search {
+    flex: 1;
+    min-width: 0;
+}
+
+.navbar-search input {
+    width: 100%;
+    min-width: 0;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .navbar-search {
+        order: 3;
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 12px;
+    }
+
+    .navbar-logo {
+        font-size: 16px;
+    }
+
+    .navbar-links a span,
+    .navbar-links button span {
+        display: none;
+        /* hide text, show icons only */
+    }
+}
+
+/* ─────────────────────────────────────
+   HOME PAGE
+───────────────────────────────────── */
+.home-main {
+    padding: 20px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Language filters - scrollable on mobile */
+.lang-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.lang-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.lang-filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Category filters - scrollable */
+.category-filters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.category-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Books grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+/* Continue reading */
+.continue-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.continue-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.continue-card {
+    flex-shrink: 0;
+    min-width: 200px;
+    max-width: 260px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .home-main {
+        padding: 16px;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .home-main {
+        padding: 12px;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .lang-filters {
+        flex-wrap: nowrap;
+    }
+
+    .continue-card {
+        min-width: 180px;
+    }
+
+    .lang-active-label {
+        display: none;
+        /* save space on mobile */
+    }
+}
+
+/* ─────────────────────────────────────
+   BOOK CARD
+───────────────────────────────────── */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+}
+
+.book-cover {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 10px 8px;
+}
+
+.book-title {
+    font-size: 13px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-author {
+    font-size: 11px;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .book-title {
+        font-size: 12px;
+    }
+
+    .book-author {
+        font-size: 10px;
+    }
+
+    .lang-badge {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    .book-info {
+        padding: 8px 6px;
+    }
+}
+
+/* ─────────────────────────────────────
+   READER INFO PAGE
+───────────────────────────────────── */
+.rd-info-content {
+    padding: 0 16px 60px;
+}
+
+.rd-hero {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .rd-hero {
+        gap: 24px;
+    }
+
+    .rd-cover {
+        width: 140px !important;
+        height: 200px !important;
+    }
+
+    .rd-book-title {
+        font-size: 26px !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .rd-hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .rd-cover {
+        width: 150px !important;
+        height: 220px !important;
+    }
+
+    .rd-cover-placeholder {
+        width: 150px !important;
+        height: 220px !important;
+    }
+
+    .rd-book-title {
+        font-size: 24px !important;
+    }
+
+    .rd-book-tags {
+        justify-content: center;
+    }
+
+    .rd-progress-card-stats {
+        justify-content: center;
+    }
+
+    .rd-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rd-about-card {
+        padding: 18px !important;
+    }
+
+    .rd-header {
+        padding: 14px 16px !important;
+    }
+}
+
+/* ─────────────────────────────────────
+   FULLSCREEN READER
+───────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .rd-topbar {
+        padding: 8px 12px !important;
+        gap: 8px !important;
+    }
+
+    .rd-topbar-title {
+        font-size: 12px !important;
+    }
+
+    .rd-page-tracker {
+        padding: 6px 12px !important;
+        gap: 10px !important;
+    }
+
+    .rd-daily-wrap {
+        display: none;
+    }
+
+    .rd-tracker-stats {
+        gap: 8px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .rd-topbar {
+        padding: 8px 10px !important;
+    }
+
+    .rd-topbar-center {
+        display: none;
+        /* save space, title is not needed in fullscreen */
+    }
+
+    .rd-streak {
+        display: none;
+    }
+
+    .rd-page-tracker {
+        flex-wrap: wrap;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+    }
+
+    .rd-page-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rd-tracker-stats {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rd-panel {
+        width: calc(100vw - 20px) !important;
+        right: 10px !important;
+        top: 100px !important;
+    }
+
+    .rd-milestone-inner {
+        padding: 20px 24px !important;
+    }
+
+    .rd-milestone-inner h3 {
+        font-size: 20px !important;
+    }
+}
+
+/* ─────────────────────────────────────
+   LIBRARY PAGE
+───────────────────────────────────── */
+.library-main {
+    padding: 20px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.library-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.library-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    cursor: pointer;
+    position: relative;
+}
+
+.lib-cover {
+    width: 56px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.lib-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lib-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.lib-info h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.lib-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .library-main {
+        padding: 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .library-main {
+        padding: 12px;
+    }
+
+    .library-heading {
+        font-size: 22px !important;
+    }
+
+    .library-card {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .lib-cover {
+        width: 46px;
+        height: 66px;
+    }
+
+    .lib-info h3 {
+        font-size: 13px;
+    }
+
+    .lib-info p {
+        font-size: 12px;
+    }
+
+    .lib-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .lib-delete-btn {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
+
+/* ─────────────────────────────────────
+   LOGIN PAGE
+───────────────────────────────────── */
+@media (max-width: 480px) {
+    .login-card {
+        margin: 20px;
+        padding: 28px 20px !important;
+    }
+
+    .login-title {
+        font-size: 28px !important;
+    }
+}
+
+/* ─────────────────────────────────────
+   LOADING SCREEN
+───────────────────────────────────── */
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+/* ─────────────────────────────────────
+   EMPTY STATE
+───────────────────────────────────── */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+@media (max-width: 480px) {
+    .empty-state {
+        padding: 30px 16px;
+    }
+
+    .empty-icon {
+        font-size: 40px !important;
+    }
+
+    .empty-state h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* ─────────────────────────────────────
+   SCROLLBAR - nice thin scrollbar
+───────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─────────────────────────────────────
+   TOUCH IMPROVEMENTS
+───────────────────────────────────── */
+@media (hover: none) {
+
+    /* Remove hover effects on touch devices */
+    .book-card:hover {
+        transform: none;
+    }
+
+    .rd-cta-btn:hover {
+        transform: none;
+    }
+
+    .continue-card:hover {
+        transform: none;
+    }
+
+    /* Bigger tap targets */
+    button,
+    a {
+        min-height: 40px;
+        min-width: 40px;
+    }
+}
