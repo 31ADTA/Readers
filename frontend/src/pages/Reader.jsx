@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Reader.css';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || '';
 const WORDS_PER_PAGE = 400;
 const MILESTONES = [10, 25, 50, 75, 90, 100];
 

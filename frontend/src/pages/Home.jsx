@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import BookCard from '../components/BookCard';
 import './Home.css';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 const LANGUAGES = [
   { code: '', label: '🌐 All', },
