@@ -5,12 +5,11 @@ const User = require('../models/User');
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/api/auth/google/callback'
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     // Check if user already exists
     let user = await User.findOne({ googleId: profile.id });
-
     if (!user) {
       // Create new user from Gmail account
       user = await User.create({
@@ -21,7 +20,6 @@ passport.use(new GoogleStrategy({
       });
       console.log('✅ New user created:', user.email);
     }
-
     return done(null, user);
   } catch (error) {
     return done(error, null);
@@ -29,7 +27,12 @@ passport.use(new GoogleStrategy({
 }));
 
 passport.serializeUser((user, done) => done(null, user.id));
+
 passport.deserializeUser(async (id, done) => {
-  const user = await User.findById(id);
-  done(null, user);
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
 });
