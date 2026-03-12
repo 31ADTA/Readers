@@ -2,21 +2,30 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
+const ensureGoogleStrategy = (req, res, next) => {
+  if (!passport._strategy('google')) {
+    return res.status(500).json({
+      success: false,
+      message: 'Google OAuth is not configured. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.'
+    });
+  }
+  return next();
+};
+
 // Start Google OAuth login
-router.get('/google',
+router.get('/google', ensureGoogleStrategy,
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
 // Google OAuth callback
-router.get('/google/callback', (req, res, next) => {
+router.get('/google/callback', ensureGoogleStrategy, (req, res, next) => {
   const clientUrl = process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
-  passport.authenticate('google', { 
-    failureRedirect: `${clientUrl}/login?error=failed` 
+  passport.authenticate('google', {
+    failureRedirect: `${clientUrl}/login?error=failed`
   })(req, res, next);
 }, (req, res) => {
-    // Successful login → redirect to home
-    const clientUrl = process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
-    res.redirect(`${clientUrl}/home`);
+  const clientUrl = process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
+  res.redirect(`${clientUrl}/home`);
 });
 
 // Get current logged in user

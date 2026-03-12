@@ -1,9 +1,12 @@
 {
   "name": "book-reading-app",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "start": "node backend/server.js",
-    "build": "cd frontend && npm install && npm run build",
-    "install-all": "cd backend && npm install && cd ../frontend && npm install"
+    "build": "npm run build --prefix frontend",
+    "start": "node api/index.js",
+    "dev": "npm run dev --prefix api",
+    "dev:frontend": "npm start --prefix frontend",
+    "install:all": "npm install --prefix frontend && npm install --prefix api"
   }
 }
