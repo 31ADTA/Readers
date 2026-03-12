@@ -38,7 +38,7 @@ A full-stack book reading website with Gmail authentication, Google Books API, r
 
 ### Step 4: Setup Backend
 ```bash
-cd backend
+cd api
 npm install
 cp .env.example .env
 # Fill in your .env file with all the keys above
@@ -62,12 +62,12 @@ Go to: http://localhost:3000
 ## 📁 Project Structure
 ```
 book-reading-website/
-├── backend/
+├── api/
 │   ├── models/         # MongoDB schemas
 │   ├── routes/         # API endpoints
 │   ├── middleware/      # Auth protection
 │   ├── config/         # DB + Passport setup
-│   └── server.js       # Main server
+│   └── index.js        # Main server / Vercel function entry
 └── frontend/
     └── src/
         ├── pages/      # Login, Home, Reader, Library
